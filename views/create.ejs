@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a cookie page</title>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+      .create-cookie button{
+        margin-top: 20px;
+        background: rgb(255, 0, 191);
+        color: rgb(255, 255, 255);
+        padding: 6px;
+        border: 0;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+      .create-cookie content{
+        font-size: 16px;
+        font-size: max(16px, 1em);
+        padding: 0.25em 0.5em;
+        background-color: #fff;
+        border: 2px solid var(--input-border);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+<body>
+  <nav>
+    <div class="site-title">
+      <h1>This is a cookie recepie submission site</h1>
+    </div>
+  </nav>
+
+  <div class="create-cookie content">
+    <form>
+      <label for="cookieName">Cookie name:</label>
+      <input type="text" id="cookieName" name="cookieName" required>
+      <label for="cookieSummary">Cookie summary:</label>
+      <input type="text" id="cookieSummary" name="cookieSummary">
+      <label for="cookieRecepie">Cookie recepie:</label>
+      <textarea id="body" name="cookieRecepie" required></textarea>
+      <button>Submit New Cookie!</button>
+    </form>
+  </div>
+  <a href="/"><h3>Go back to the Homepage</h3></a>
+
+  <footer>
+    by <b>kruczyna</b>
+  </footer>
+  </body>
+</html>
