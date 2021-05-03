@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie page</title>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+
+<body>
+  <nav>
+    <div class="site-title">
+      <h1>Those are all the cookies we have!</h1>
+    </div>
+    <div class="cookie content">
+      <h2>All Cookies</h2>
+
+      <% if (cookie.length > 0) { %>
+        <% cookie.forEach(cookie => { %>
+          <h3 class="title"><%= cookie.name %></h3>
+          <p class="snippet"><%= cookie.cookieRecepie %></p>
+        <% }) %>
+      <% } else { %>
+        <p>There are no cookies to display...</p>
+      <% } %>
+
+    </div>
+  </nav>
+  <a href="/create"><h3>Go ahead and create a cookie</h3></a>
+
+  <footer>
+    by <b>kruczyna</b>
+  </footer>
+  </body>
+</html>
