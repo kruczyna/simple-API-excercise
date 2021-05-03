@@ -1,3 +1,4 @@
+const { response } = require('express')
 const express = require('express')
 const app = express()
 require('dotenv').config()
@@ -25,6 +26,26 @@ app.get('/', (req, res) => {
 
 app.get('/create-cookie', (req, res) => {
   res.render('create')
+})
+
+app.get('/cookie/:id', (req, res) => {
+  Cookie.findById(req.params.id)
+    .then((result) => {
+      res.render('details', { cookie: result })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
+
+app.delete('/cookie/:id', (req, res) => {
+  Cookie.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.json({ redirect: '/all-cookies'})
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 })
 
 app.post('/create-cookie', (req, res) => {

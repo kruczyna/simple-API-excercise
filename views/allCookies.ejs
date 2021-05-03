@@ -20,8 +20,10 @@
 
       <% if (cookie.length > 0) { %>
         <% cookie.forEach(cookie => { %>
-          <h3 class="title"><%= cookie.name %></h3>
+          <a class="single" href="/cookie/<%= cookie._id %>">
+            <h3 class="title"><%= cookie.cookieName %></h3>
           <p class="snippet"><%= cookie.cookieRecepie %></p>
+          </a>
         <% }) %>
       <% } else { %>
         <p>There are no cookies to display...</p>
