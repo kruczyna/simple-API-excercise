@@ -1,22 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Cookie = require('../models/models')
+const cookieController = require('../controllers/cookieController')
 
 router.get('/', (req, res) => {
   res.render('create')
 })
 
-
-router.post('/', (req, res) => {
-  const cookie = new Cookie(req.body)
-  cookie.save()
-    .then((result) => {
-      console.log(result)
-      res.redirect('/all-cookies')
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-})
+router.post('/', cookieController.cookie_create_post)
 
 module.exports = router;
