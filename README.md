@@ -2,10 +2,12 @@ Descritption:
 This is a simple app made for practice and learning purposes.
 
 1. To install all dependencies run:
-   `npm install`
+   `yarn install`
 
 2. To run the app in non-dev mode, run:
-   `npm app`
+   `yarn app`
 
 3. To run the app in dev mode, run:
-   `npm app:dev`
+   `yarn app:dev`
+
+This repo doesn't have the `.env` file, please contact victoria.kruczek@gmail.com to get it.
