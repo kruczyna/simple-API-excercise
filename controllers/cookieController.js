@@ -1,51 +1,33 @@
-const Cookie = require('../models/models')
+const Cookie = require('../models/models');
 
-const cookie_get_all = (req, res) => {
-  Cookie.find().sort({ createdAt: -1 })
-  .then((result) => {
-    res.render('allCookies', { cookie: result })
-  })
-  .catch((error) => {
-    console.log(error)
-  })
-}
+const cookie_get_all = async (req, res) => {
+  const cookieValues = await Cookie.find().sort({ createdAt: -1 });
+  res.render('allCookies', { cookie: cookieValues });
+};
 
-const cookie_create_post = (req, res) => {
-  const cookie = new Cookie(req.body)
-  cookie.save()
-    .then((result) => {
-      console.log(result)
-      res.redirect('/all-cookies')
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-}
+const cookie_create_post = async (req, res) => {
+  const cookie = new Cookie(req.body);
+  await cookie.save();
+  res.redirect('/all-cookies');
+};
 
-const cookie_get_one = (req, res) => {
-  Cookie.findById(req.params.id)
-  .then((result) => {
-    res.render('details', { cookie: result })
-  })
-  .catch((error) => {
-    console.log(error)
-    res.status(404).render('404')
-  })
-}
+const cookie_get_one = async (req, res) => {
+  try {
+    const foundCookie = await Cookie.findById(req.params.id);
+    res.render('details', { cookie: foundCookie });
+  } catch (error) {
+    res.status(404).render('404');
+  }
+};
 
-const cookie_delete_one = (req, res) => {
-  Cookie.findByIdAndDelete(req.params.id)
-    .then(() => {
-      res.json({ redirect: '/all-cookies'})
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-}
+const cookie_delete_one = async (req, res) => {
+  await Cookie.findByIdAndDelete(req.params.id);
+  res.json({ redirect: '/all-cookies' });
+};
 
 module.exports = {
   cookie_get_all,
   cookie_create_post,
   cookie_get_one,
-  cookie_delete_one
-}
+  cookie_delete_one,
+};
